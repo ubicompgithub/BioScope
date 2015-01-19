@@ -32,31 +32,38 @@ public final class R {
         public static final int plot_bg=0x7f020004;
         public static final int report_bg=0x7f020005;
         public static final int switch_plot_bg=0x7f020006;
-        public static final int tab_bg=0x7f020007;
+        public static final int switch_plot_bg_selected=0x7f020007;
+        public static final int tab_bg=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f09001b;
         public static final int button_scan=0x7f090002;
-        public static final int canvas_frame=0x7f09000d;
-        public static final int chartView=0x7f09000e;
-        public static final int device_address=0x7f090014;
-        public static final int device_name=0x7f090013;
+        public static final int canvas_frame=0x7f09000b;
+        public static final int chartView=0x7f09000c;
+        public static final int device_address=0x7f09001a;
+        public static final int device_name=0x7f090019;
         public static final int fragment_frameLayout=0x7f090000;
-        public static final int gesture=0x7f090005;
-        public static final int step_count=0x7f090006;
-        public static final int textView1=0x7f090003;
-        public static final int textView2=0x7f090004;
-        public static final int text_daily_average=0x7f090008;
-        public static final int text_day=0x7f090010;
-        public static final int text_min=0x7f09000f;
-        public static final int text_month=0x7f090012;
-        public static final int text_monthly_average=0x7f09000a;
-        public static final int text_steps=0x7f09000c;
-        public static final int text_subtitle=0x7f09000b;
-        public static final int text_week=0x7f090011;
-        public static final int text_weekly_average=0x7f090009;
+        public static final int gesture=0x7f090003;
+        public static final int step_count=0x7f090004;
+        public static final int textView1=0x7f090010;
+        public static final int text_average_temperature_hour=0x7f090008;
+        public static final int text_average_temperature_minute=0x7f090007;
+        public static final int text_average_temperature_second=0x7f090006;
+        public static final int text_centigrade=0x7f09000a;
+        public static final int text_day=0x7f09000f;
+        public static final int text_minute=0x7f09000e;
+        public static final int text_second=0x7f09000d;
+        public static final int text_steps=0x7f090018;
+        public static final int text_steps_per_hour=0x7f090015;
+        public static final int text_steps_per_hour_value=0x7f090016;
+        public static final int text_steps_per_minute=0x7f090013;
+        public static final int text_steps_per_minute_value=0x7f090014;
+        public static final int text_steps_per_second=0x7f090011;
+        public static final int text_steps_per_second_value=0x7f090012;
+        public static final int text_subtitle_mobility=0x7f090017;
+        public static final int text_subtitle_temperature=0x7f090009;
         public static final int title_new_devices=0x7f090001;
-        public static final int walking_speed=0x7f090007;
+        public static final int walking_speed=0x7f090005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -74,22 +81,26 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int average_temperature_hour=0x7f05000e;
+        public static final int average_temperature_minute=0x7f05000d;
+        public static final int average_temperature_second=0x7f05000c;
         public static final int body_temperature=0x7f050004;
-        public static final int daily_average=0x7f050009;
-        public static final int day=0x7f05000f;
+        public static final int centigrade=0x7f050012;
         public static final int gesture=0x7f050006;
         public static final int heart_rate=0x7f050003;
-        public static final int minute=0x7f05000e;
+        public static final int hour=0x7f050015;
+        public static final int minute=0x7f050014;
         public static final int mobility=0x7f050002;
-        public static final int month=0x7f050011;
-        public static final int monthly_average=0x7f05000b;
+        public static final int second=0x7f050013;
         public static final int settings=0x7f050005;
         public static final int step_count=0x7f050007;
-        public static final int steps=0x7f05000d;
-        public static final int subtitle=0x7f05000c;
+        public static final int steps=0x7f050010;
+        public static final int steps_per_hour=0x7f05000b;
+        public static final int steps_per_minute=0x7f05000a;
+        public static final int steps_per_second=0x7f050009;
+        public static final int subtitle_mobility=0x7f05000f;
+        public static final int subtitle_temperature=0x7f050011;
         public static final int walking_speed=0x7f050008;
-        public static final int week=0x7f050010;
-        public static final int weekly_average=0x7f05000a;
     }
     public static final class style {
         /** 

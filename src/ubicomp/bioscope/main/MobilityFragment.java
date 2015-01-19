@@ -14,22 +14,30 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import ubicomp.bioscope.R;
 
 
-public class MobilityFragment extends Fragment {
+public class MobilityFragment extends Fragment{
 	
 	private View view;
 	private ChartView chartView;
 	
 	private Timer timerForPlot = new Timer();
-	private int elapse = 0;
+
+	private int elapsedSeconds = 0;
+	private int totalSteps = 0;
+
+	private TextView chartSwitchSecond, chartSwitchMinute, chartSwitchDay;
+	private TextView stepsPerSecValue;
+
+	private TextView stepsText;
 	
     private TimerTask task = new TimerTask(){
         @Override
         public void run() {
-        	elapse++;
-        	if(elapse <= 90){
+        	elapsedSeconds++;
+        	if(elapsedSeconds <= 90){
         		Message message = new Message();
                 message.what = 1;
                 handler.sendMessage(message);
@@ -45,9 +53,15 @@ public class MobilityFragment extends Fragment {
 		 public void handleMessage(Message msg){
 			super.handleMessage(msg);
 			// chartView.invalidate();
+			
+		
+			
 
-			Random rand = new Random();
-			chartView.drawData( 400 + rand.nextInt(200) - 100 );
+			// Random rand = new Random();
+			// chartView.drawData( 400 + rand.nextInt(200) - 100 );
+			int tempInt = (int) ( Double.parseDouble( stepsPerSecValue.getText().toString() ) );
+			chartView.drawData( 400 + 50 * tempInt );
+			
 			
 		 }
     };
@@ -56,7 +70,8 @@ public class MobilityFragment extends Fragment {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        timerForPlot.scheduleAtFixedRate(task, 0, 100);
+        timerForPlot.scheduleAtFixedRate(task, 0, 1000);
+
         
     }
 	
@@ -67,6 +82,50 @@ public class MobilityFragment extends Fragment {
 		view = inflater.inflate(R.layout.fragment_mobility, container, false);
 		chartView = (ChartView) view.findViewById(R.id.chartView);
 		
+		chartSwitchSecond = (TextView) view.findViewById(R.id.text_second);
+		chartSwitchMinute = (TextView) view.findViewById(R.id.text_minute);
+		chartSwitchDay = (TextView) view.findViewById(R.id.text_day);
+		chartSwitchSecond.setOnClickListener(new ChartSecondOnClickListener());
+        chartSwitchMinute.setOnClickListener(new ChartMinuteOnClickListener());
+        chartSwitchDay.setOnClickListener(new ChartDayOnClickListener());
+
+		stepsText = (TextView) view.findViewById(R.id.text_steps);
+		stepsPerSecValue = (TextView) view.findViewById(R.id.text_steps_per_second_value);
+
 		return view;
+	}
+	
+	
+	private class ChartSecondOnClickListener implements View.OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			chartSwitchSecond.setBackgroundResource(R.drawable.switch_plot_bg_selected);
+			chartSwitchMinute.setBackgroundResource(R.drawable.switch_plot_bg);
+			chartSwitchDay.setBackgroundResource(R.drawable.switch_plot_bg);
+		}
+	}
+	private class ChartMinuteOnClickListener implements View.OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			chartSwitchSecond.setBackgroundResource(R.drawable.switch_plot_bg);
+			chartSwitchMinute.setBackgroundResource(R.drawable.switch_plot_bg_selected);
+			chartSwitchDay.setBackgroundResource(R.drawable.switch_plot_bg);
+		}
+	}
+	private class ChartDayOnClickListener implements View.OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			chartSwitchSecond.setBackgroundResource(R.drawable.switch_plot_bg);
+			chartSwitchMinute.setBackgroundResource(R.drawable.switch_plot_bg);
+			chartSwitchDay.setBackgroundResource(R.drawable.switch_plot_bg_selected);
+		}
+	}
+	
+	public void updateTotalSteps(int steps){
+		TextView stepTextView = (TextView) view.findViewById(R.id.text_steps);
+		stepTextView.setText(steps + " steps");
 	}
 }

@@ -20,17 +20,22 @@
     <string name="step_count">Step count</string>
     <string name="walking_speed">Walking speed</string>
 
-    <string name="daily_average">Daily average: </string>
-    <string name="weekly_average">Weekly average: </string>
-    <string name="monthly_average">Monthly average: </string>
+    <string name="steps_per_second">Steps per second: </string>
+    <string name="steps_per_minute">Steps per minute: </string>
+    <string name="steps_per_hour">Steps per hour: </string>
+    <string name="average_temperature_second">Average temperature (second): </string>
+    <string name="average_temperature_minute">Average temperature (minute): </string>
+    <string name="average_temperature_hour">Average temperature(hour): </string>
 
-    <string name="subtitle">Today\'s total count: </string>
+
+    <string name="subtitle_mobility">Today\'s total count: </string>
     <string name="steps">steps</string>
+    <string name="subtitle_temperature">Current temperature: </string>
+    <string name="centigrade">℃</string>
 
+    <string name="second">Sec</string>
     <string name="minute">Min</string>
-    <string name="day">Day</string>
-    <string name="week">Week</string>
-    <string name="month">Month</string>
+    <string name="hour">Hour</string>
     
     
 </resources>

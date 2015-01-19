@@ -58,11 +58,11 @@ public class ChartView extends View {
 			canvas.drawLine(cord_x, cord_y.get(idx), cord_x + INTERVAL, cord_y.get(idx+1), min_paint);
 			cord_x = cord_x + INTERVAL;
 			
-			Log.d("drawLineChart", "MSG: " + cord_y.get(idx));  // FOR TEST!!!!!!!!!!!!!!!!!!!!!!!
+			// Log.d("drawLineChart", "MSG: " + cord_y.get(idx));  // FOR TEST!!!!!!!!!!!!!!!!!!!!!!!
 		}
 		
 		count++;  // FOR TEST!!!!!!!!!!!!!!!!!!!!!!!
-		Log.d("drawLineChart", "============= " + count + " =====================");  // FOR TEST!!!!!!!!!!!!!!!!!!!!!!!
+		// Log.d("drawLineChart", "============= " + count + " =====================");  // FOR TEST!!!!!!!!!!!!!!!!!!!!!!!
 	}
 
 

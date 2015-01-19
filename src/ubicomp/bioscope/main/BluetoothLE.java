@@ -1,9 +1,12 @@
 package ubicomp.bioscope.main;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 import ubicomp.bioscope.R;
+import ubicomp.bioscope.main.ChartView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,10 +21,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 @SuppressLint("NewApi")
 public class BluetoothLE {
@@ -47,6 +53,60 @@ public class BluetoothLE {
     
     private long steps = 0;
     
+    private Timer timerForUpdate = new Timer();
+    private int elapsedSeconds = 0;
+    private ChartView chartView;
+    
+    private TimerTask task = new TimerTask(){
+        @Override
+        public void run() {
+            elapsedSeconds++;
+            if(elapsedSeconds <= 120){
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+            }
+            else{
+            	timerForUpdate.cancel();
+            }
+        }
+    };
+    
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+         public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            // chartView.invalidate();
+
+            double stepsPerSec = (double)steps / (double)elapsedSeconds;
+            double stepsPerMin = stepsPerSec * 60;
+            double stepsPerHour = stepsPerMin * 60;
+        
+            TextView stepsPerSecTextView = (TextView) activity.findViewById(R.id.text_steps_per_second_value);
+            TextView stepsPerMinTextView = (TextView) activity.findViewById(R.id.text_steps_per_minute_value);
+            TextView stepsPerHourTextView = (TextView) activity.findViewById(R.id.text_steps_per_hour_value);
+            // TextView elapsedTimeTextView = (TextView) activity.findViewById(R.id.text_elapsedTime);
+            
+            // if(elapsedTimeTextView != null)
+            	// elapsedTimeTextView.setText(  );
+            
+            if(stepsPerSecTextView != null)
+                stepsPerSecTextView.setText( ((double)((int)(stepsPerSec*10)))/10 + "" );
+            if(stepsPerMinTextView != null)
+                stepsPerMinTextView.setText( ((double)((int)(stepsPerMin*10)))/10 + "" );
+            if(stepsPerHourTextView != null)
+                stepsPerHourTextView.setText( ((double)((int)(stepsPerHour*10)))/10 + "" );
+            
+            // if(chartView != null){
+            //     chartView.drawData( 400 + (int)stepsPerSec );
+            //     Log.i("FOR TEST", "chartView != null");
+            // }
+
+            // Random rand = new Random();
+            // chartView.drawData( 400 + rand.nextInt(200) - 100 );
+            
+         }
+    };
      
 	// Code to manage Service lifecycle.
 	private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -112,9 +172,9 @@ public class BluetoothLE {
         		case 3: // Temp
         			double temp = ByteConversion.toInt(data[1], data[2])*0.0625;
         			Log.i("BLE", "Temp " + temp + " ");
-        			TextView tempTextView = (TextView)activity.findViewById(R.id.textView2);
+        			TextView tempTextView = (TextView)activity.findViewById(R.id.text_centigrade);
         			if(tempTextView!=null)
-        				tempTextView.setText(temp + " ");
+        			 	tempTextView.setText( ((double)((int)(temp*10)))/10 + " ");
         			break;
         		}
             }
@@ -123,7 +183,10 @@ public class BluetoothLE {
 	
 	public BluetoothLE(Activity activity) {
 		this.activity = activity;
-		
+
+        chartView = (ChartView) activity.findViewById(R.id.chartView);
+		timerForUpdate.scheduleAtFixedRate(task, 0, 1000);
+
 		// Use this check to determine whether BLE is supported on the device.  Then you can
         // selectively disable BLE-related features.
         if (!activity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {

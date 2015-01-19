@@ -61,33 +61,81 @@
             android:weightSum="0.9"
             android:background="@drawable/report_bg" >
 
-            <TextView
-                android:id="@+id/text_daily_average"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="0.3"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:text="@string/daily_average"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-            <TextView
-                android:id="@+id/text_weekly_average"
-                android:layout_width="wrap_content"
+                android:layout_weight="0.3" >
+
+                <TextView
+                    android:id="@+id/text_steps_per_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/steps_per_second"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/text_steps_per_second_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="1.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="0.3"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:text="@string/weekly_average"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-            <TextView
-                android:id="@+id/text_monthly_average"
-                android:layout_width="wrap_content"
+                android:layout_weight="0.3" >
+
+                <TextView
+                    android:id="@+id/text_steps_per_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/steps_per_minute"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/text_steps_per_minute_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="1.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="0.3"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:text="@string/monthly_average"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:layout_weight="0.3" >
+
+                <TextView
+                    android:id="@+id/text_steps_per_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/steps_per_hour"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/text_steps_per_hour_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="1.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -102,12 +150,12 @@
             android:background="@drawable/report_bg" >
             
             <TextView
-                android:id="@+id/text_subtitle"
+                android:id="@+id/text_subtitle_mobility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:gravity="center_vertical"
-                android:text="@string/subtitle"
+                android:text="@string/subtitle_mobility"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
             
             <TextView
@@ -151,12 +199,23 @@
             android:orientation="vertical"
             android:gravity="center" >
             <TextView
-                android:id="@+id/text_min"
+                android:id="@+id/text_second"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:background="@drawable/switch_plot_bg_selected"
+                android:text="@string/second"
+                android:clickable="true"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/text_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-4dp"
+                android:gravity="center"
                 android:background="@drawable/switch_plot_bg"
                 android:text="@string/minute"
+                android:clickable="true"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
             <TextView
                 android:id="@+id/text_day"
@@ -165,25 +224,8 @@
                 android:layout_marginTop="-4dp"
                 android:gravity="center"
                 android:background="@drawable/switch_plot_bg"
-                android:text="@string/day"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-            <TextView
-                android:id="@+id/text_week"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-4dp"
-                android:gravity="center"
-                android:background="@drawable/switch_plot_bg"
-                android:text="@string/week"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-            <TextView
-                android:id="@+id/text_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-4dp"
-                android:gravity="center"
-                android:background="@drawable/switch_plot_bg"
-                android:text="@string/month"
+                android:text="@string/hour"
+                android:clickable="true"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
         
